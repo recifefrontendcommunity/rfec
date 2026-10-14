@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { getUpcomingEvents } from '@/sanity/lib/queries'
 
+import { Reveal, StaggerItem, StaggerList } from './motion/reveal'
 import TitleWithTag from './title-with-tag'
 
 const UpcomingEvents = async () => {
@@ -22,18 +23,20 @@ const UpcomingEvents = async () => {
         <TitleWithTag className="mb-6 text-2xl md:text-3xl lg:text-4xl">
           Próximos Eventos
         </TitleWithTag>
-        <p className="mb-6 text-base md:max-w-2xl md:text-lg">
-          Confira o que está por vir na comunidade e participe dos nossos
-          próximos encontros.
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mb-6 text-base md:max-w-2xl md:text-lg">
+            Confira o que está por vir na comunidade e participe dos nossos
+            próximos encontros.
+          </p>
+        </Reveal>
         {hasEvents ? (
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerList className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visibleEvents.map((event) => (
-              <li key={event._id}>
+              <StaggerItem key={event._id}>
                 <EventCard event={event} />
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </StaggerList>
         ) : (
           <div
             className={cn(
