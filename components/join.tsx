@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { getImageUrl } from '@/sanity/lib/image'
 import { getHomePage } from '@/sanity/lib/queries'
 
+import { Parallax } from './motion/parallax'
+import { Reveal } from './motion/reveal'
 import TitleWithTag from './title-with-tag'
 import { Button } from './ui/button'
 
@@ -17,23 +19,36 @@ const Join = async () => {
         <TitleWithTag className="mb-6 text-2xl md:text-3xl lg:text-4xl">
           Junte-se à comunidade!
         </TitleWithTag>
-        <p className="mb-12 text-base md:max-w-2xl md:text-lg">
-          Fique por dentro dos eventos, novidades e faça parte das nossas
-          conversas. Entre agora no grupo da RFEC no WhatsApp!
-        </p>
-        <Button variant="secondary" className="md:h-11 md:px-8 md:text-base">
-          Entrar na RFEC!
-        </Button>
+        <Reveal delay={0.1}>
+          <p className="mb-12 text-base md:max-w-2xl md:text-lg">
+            Fique por dentro dos eventos, novidades e faça parte das nossas
+            conversas. Entre agora no grupo da RFEC no WhatsApp!
+          </p>
+        </Reveal>
+        <Reveal delay={0.25} className="relative inline-block">
+          <span
+            className="absolute inset-0 animate-ping rounded-md bg-blue-500/40"
+            aria-hidden
+          />
+          <Button
+            variant="secondary"
+            className="relative md:h-11 md:px-8 md:text-base"
+          >
+            Entrar na RFEC!
+          </Button>
+        </Reveal>
       </div>
       <div className="absolute inset-0 z-[-1] overflow-hidden bg-zinc-900">
         {backgroundUrl && (
-          <Image
-            src={backgroundUrl}
-            alt={background?.alt ?? ''}
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+          <Parallax>
+            <Image
+              src={backgroundUrl}
+              alt={background?.alt ?? ''}
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </Parallax>
         )}
         <span className="absolute inset-0 bg-black/70"></span>
       </div>

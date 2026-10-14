@@ -2,6 +2,7 @@ import { Github, Linkedin, Instagram, Mail } from 'lucide-react'
 import Link from 'next/link'
 
 import RFECLogo from './logo'
+import { Reveal } from './motion/reveal'
 
 const Footer = () => {
   return (
@@ -95,11 +96,21 @@ const Footer = () => {
           </div>
         </div>
 
+        <Reveal y={60} className="mt-10 select-none">
+          <p
+            aria-hidden
+            className="text-center text-[22vw] leading-none font-black tracking-tighter text-transparent [-webkit-text-stroke:1.5px_rgb(82_82_91)] md:text-[16vw]"
+          >
+            RFEC
+          </p>
+        </Reveal>
+
         <div className="border-muted-foreground/40 mt-6 flex flex-col items-center justify-between border-t pt-6 md:mt-10 md:flex-row">
           <p className="text-muted-foreground text-center text-xs md:text-left">
-            &copy; <span className="tabular-nums">2025</span> Recife Front-End
-            Community. <br className="md:hidden" /> Todos os direitos
-            reservados.
+            &copy;{' '}
+            <span className="tabular-nums">{new Date().getFullYear()}</span>{' '}
+            Recife Front-End Community. <br className="md:hidden" /> Todos os
+            direitos reservados.
           </p>
         </div>
       </div>

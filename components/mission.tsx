@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { getImageUrl } from '@/sanity/lib/image'
 import { getHomePage } from '@/sanity/lib/queries'
 
+import { Parallax } from './motion/parallax'
+import { Reveal } from './motion/reveal'
 import TitleWithTag from './title-with-tag'
 
 const Mission = async () => {
@@ -19,21 +21,25 @@ const Mission = async () => {
         <TitleWithTag className="mb-6 text-2xl md:text-3xl lg:text-4xl">
           Nossa Missão
         </TitleWithTag>
-        <p className="mb-6 text-base md:max-w-2xl md:text-lg">
-          Promover troca de experiências, eventos e gerar oportunidades para as
-          pessoas da comunidade se conectarem, aprenderem e brilharem no mundo
-          da tecnologia.
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mb-6 text-base md:max-w-2xl md:text-lg">
+            Promover troca de experiências, eventos e gerar oportunidades para
+            as pessoas da comunidade se conectarem, aprenderem e brilharem no
+            mundo da tecnologia.
+          </p>
+        </Reveal>
         <div className="grid h-96 grid-cols-1 grid-rows-3 gap-5 md:h-[28rem] lg:h-[36rem]">
           <div className="relative row-span-2 overflow-hidden rounded-lg bg-zinc-800">
             {featuredUrl && (
-              <Image
-                src={featuredUrl}
-                alt={featured?.alt ?? ''}
-                fill
-                sizes="(min-width: 1024px) 66vw, 100vw"
-                className="object-cover object-center"
-              />
+              <Parallax>
+                <Image
+                  src={featuredUrl}
+                  alt={featured?.alt ?? ''}
+                  fill
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  className="object-cover object-center"
+                />
+              </Parallax>
             )}
             <span className="absolute inset-0 bg-black/40"></span>
           </div>
@@ -46,13 +52,15 @@ const Mission = async () => {
                   className="relative overflow-hidden rounded-lg bg-zinc-800"
                 >
                   {url && (
-                    <Image
-                      src={url}
-                      alt={image.alt ?? ''}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 50vw"
-                      className="object-cover object-center"
-                    />
+                    <Parallax>
+                      <Image
+                        src={url}
+                        alt={image.alt ?? ''}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, 50vw"
+                        className="object-cover object-center"
+                      />
+                    </Parallax>
                   )}
                   <span className="absolute inset-0 bg-black/40"></span>
                 </div>
