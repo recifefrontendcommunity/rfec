@@ -6,7 +6,7 @@
 **System Version**: 1.0.0
 **Stack**: Next.js 16 App Router · React 19 · TypeScript 5 · Tailwind CSS v4 · shadcn/ui (single-page marketing site, `lang="pt-BR"`)
 **Maintainer**: RFEC (Recife Frontend Community) — alissonlima529@gmail.com
-**Last Indexed**: 2026-06-07
+**Last Indexed**: 2026-10-13
 **Languages**: en-US (system docs) · pt-BR (site content)
 
 ---
@@ -73,19 +73,20 @@ ai-driven-project/
 <!-- AUTO-INDEX:BEGIN -->
 | ID | Name | Path | Category | Last Modified | Description | Dependencies |
 | --- | --- | --- | --- | --- | --- | --- |
-| CORE-001 | App Router & Page Composition | `core/app-router-and-composition.md` | core | 2026-06-07 | How the single-page site is assembled from the root layout and stacked section components. | CORE-002, CORE-003, FEAT-001, FEAT-002 |
+| CORE-001 | App Router & Page Composition | `core/app-router-and-composition.md` | core | 2026-10-13 | How the single-page site is assembled from the root layout and stacked section components. | CORE-002, CORE-003, FEAT-001, FEAT-002 |
 | CORE-002 | Styling System (Tailwind v4) | `core/styling-system.md` | core | 2026-06-07 | Tailwind v4 configured in CSS only (no JS config); tokens, theme vars, and the cn() rule. | UTIL-001 |
 | CORE-003 | Design System (shadcn/ui) | `core/design-system.md` | core | 2026-06-07 | shadcn/ui primitives (new-york/zinc), how to add them, and the button/carousel base. | CORE-002, UTIL-001 |
-| FEAT-001 | Landing Page Sections | `features/landing-page-sections.md` | features | 2026-06-07 | The page-block components (Hero, WhoWeAre, Mission, Join) and the title-with-tag helper. | CORE-001, CORE-003 |
-| FEAT-002 | Site Navigation (Header / Footer / Logo) | `features/site-navigation.md` | features | 2026-06-07 | The persistent chrome — Header, Footer, Logo — rendered by the site layout. | CORE-001, CORE-003 |
+| FEAT-001 | Landing Page Sections | `features/landing-page-sections.md` | features | 2026-10-13 | The page-block components (Hero, WhoWeAre, Mission, Join) and the title-with-tag helper. | CORE-001, CORE-003, FEAT-005 |
+| FEAT-002 | Site Navigation (Header / Footer / Logo) | `features/site-navigation.md` | features | 2026-10-13 | The persistent chrome — Header, Footer, Logo — rendered by the site layout. | CORE-001, CORE-003 |
 | FEAT-003 | Partners Carousel | `features/partners-carousel.md` | features | 2026-06-07 | The auto-scrolling partners section built on the embla carousel primitive. | CORE-003, FEAT-001, UTIL-002 |
 | FEAT-004 | Events Module | `features/events-module.md` | features | 2026-06-07 | Event listing, detail, gallery pages and all events UI components (CMS-driven). | CORE-001, CORE-003, INFRA-004, UTIL-003 |
-| INFRA-001 | Build & Runtime | `infrastructure/build-and-runtime.md` | infrastructure | 2026-06-07 | Toolchain, npm scripts, key dependencies, TS config, and how the app runs/builds. | CORE-001 |
+| FEAT-005 | Motion & Visual Effects | `features/motion-and-visual-effects.md` | features | 2026-10-14 | framer-motion animation kit and decorative visuals (intro, hero, ticker, parallax, reveals). | CORE-001, FEAT-001, FEAT-002 |
+| INFRA-001 | Build & Runtime | `infrastructure/build-and-runtime.md` | infrastructure | 2026-10-13 | Toolchain, npm scripts, key dependencies, TS config, and how the app runs/builds. | CORE-001 |
 | INFRA-002 | Linting & Formatting | `infrastructure/linting-and-formatting.md` | infrastructure | 2026-06-07 | ESLint flat config, Prettier, and the enforced import-ordering rule. | INFRA-001, INFRA-003 |
 | INFRA-003 | Git & Commit Conventions | `infrastructure/git-and-commit-conventions.md` | infrastructure | 2026-06-07 | Conventional Commits enforced by commitlint + the Husky pre-commit / commit-msg hooks. | INFRA-002 |
 | INFRA-004 | Sanity CMS Layer | `infrastructure/sanity-cms-layer.md` | infrastructure | 2026-06-07 | Sanity CMS integration: client, fetch wrapper, GROQ queries, schemas, Studio, and webhooks. | INFRA-001, CORE-001 |
 | UTIL-001 | cn() Class Helper | `utilities/cn-class-helper.md` | utilities | 2026-06-07 | The cn() utility (clsx + tailwind-merge) used everywhere to compose Tailwind classes. | CORE-002 |
-| UTIL-002 | Static Assets | `utilities/static-assets.md` | utilities | 2026-06-07 | Where images/pictures live under public/ and how they are referenced via next/image. | FEAT-003 |
+| UTIL-002 | Static Assets | `utilities/static-assets.md` | utilities | 2026-10-13 | Where images/pictures live under public/ and how they are referenced via next/image. | FEAT-003 |
 | UTIL-003 | Event Utilities | `utilities/event-utilities.md` | utilities | 2026-06-07 | Date formatting helpers (America/Recife timezone) and site URL utilities for metadata/sitemap. | FEAT-004 |
 <!-- AUTO-INDEX:END -->
 
@@ -160,14 +161,14 @@ Every context file MUST contain, in order:
 ```json
 {
   "generated": "<stamped-by-commit>",
-  "count": 14,
+  "count": 15,
   "contexts": [
     {
       "id": "CORE-001",
       "name": "App Router & Page Composition",
       "path": "core/app-router-and-composition.md",
       "category": "core",
-      "lastUpdated": "2026-06-07T00:00:00Z",
+      "lastUpdated": "2026-10-13T00:00:00Z",
       "description": "How the single-page site is assembled from the root layout and stacked section components.",
       "dependencies": [
         "CORE-002",
@@ -244,11 +245,12 @@ Every context file MUST contain, in order:
       "name": "Landing Page Sections",
       "path": "features/landing-page-sections.md",
       "category": "features",
-      "lastUpdated": "2026-06-07T00:00:00Z",
+      "lastUpdated": "2026-10-13T00:00:00Z",
       "description": "The page-block components (Hero, WhoWeAre, Mission, Join) and the title-with-tag helper.",
       "dependencies": [
         "CORE-001",
-        "CORE-003"
+        "CORE-003",
+        "FEAT-005"
       ],
       "tags": [
         "hero",
@@ -268,7 +270,7 @@ Every context file MUST contain, in order:
       "name": "Site Navigation (Header / Footer / Logo)",
       "path": "features/site-navigation.md",
       "category": "features",
-      "lastUpdated": "2026-06-07T00:00:00Z",
+      "lastUpdated": "2026-10-13T00:00:00Z",
       "description": "The persistent chrome — Header, Footer, Logo — rendered by the site layout.",
       "dependencies": [
         "CORE-001",
@@ -341,11 +343,37 @@ Every context file MUST contain, in order:
       ]
     },
     {
+      "id": "FEAT-005",
+      "name": "Motion & Visual Effects",
+      "path": "features/motion-and-visual-effects.md",
+      "category": "features",
+      "lastUpdated": "2026-10-14T00:00:00Z",
+      "description": "framer-motion animation kit and decorative visuals (intro, hero, ticker, parallax, reveals).",
+      "dependencies": [
+        "CORE-001",
+        "FEAT-001",
+        "FEAT-002"
+      ],
+      "tags": [
+        "framer-motion",
+        "animation",
+        "parallax",
+        "marquee",
+        "intro-loader",
+        "hero",
+        "reduced-motion",
+        "scroll"
+      ],
+      "lang": [
+        "pt-BR"
+      ]
+    },
+    {
       "id": "INFRA-001",
       "name": "Build & Runtime",
       "path": "infrastructure/build-and-runtime.md",
       "category": "infrastructure",
-      "lastUpdated": "2026-06-07T00:00:00Z",
+      "lastUpdated": "2026-10-13T00:00:00Z",
       "description": "Toolchain, npm scripts, key dependencies, TS config, and how the app runs/builds.",
       "dependencies": [
         "CORE-001"
@@ -461,7 +489,7 @@ Every context file MUST contain, in order:
       "name": "Static Assets",
       "path": "utilities/static-assets.md",
       "category": "utilities",
-      "lastUpdated": "2026-06-07T00:00:00Z",
+      "lastUpdated": "2026-10-13T00:00:00Z",
       "description": "Where images/pictures live under public/ and how they are referenced via next/image.",
       "dependencies": [
         "FEAT-003"
