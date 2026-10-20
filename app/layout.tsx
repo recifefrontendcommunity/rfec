@@ -1,12 +1,18 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist_Mono, Manrope, Rubik } from 'next/font/google'
 
 import { SITE_URL } from '@/lib/site'
 
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const rubik = Rubik({
+  variable: '--font-rubik',
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800', '900']
+})
+
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin']
 })
 
@@ -15,7 +21,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin']
 })
 
-const SITE_NAME = 'RFEC — Recife Frontend Community'
+const SITE_NAME = 'RFEC | Recife Frontend Community'
 const SITE_DESCRIPTION =
   'A comunidade de pessoas desenvolvedoras frontend de Recife. Conheça, participe e cresça com a gente.'
 
@@ -32,7 +38,28 @@ export const metadata: Metadata = {
     'Recife',
     'Pernambuco',
     'meetup',
-    'eventos de tecnologia'
+    'eventos de tecnologia',
+    'tecnologia',
+    'desenvolvimento de software',
+    'frontend',
+    'backend',
+    'fullstack',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'Node.js',
+    'CSS',
+    'HTML',
+    'web development',
+    'web design',
+    'programação',
+    'tecnologia da informação',
+    'TI',
+    'comunidade de desenvolvedores',
+    'networking',
+    'aprendizado contínuo',
+    'carreira em tecnologia'
   ],
   alternates: { canonical: '/' },
   openGraph: {
@@ -58,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${manrope.variable} ${rubik.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

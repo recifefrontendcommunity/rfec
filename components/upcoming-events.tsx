@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { getUpcomingEvents } from '@/sanity/lib/queries'
 
 import { Reveal, StaggerItem, StaggerList } from './motion/reveal'
+import { SectionDecor } from './motion/section-decor'
 import TitleWithTag from './title-with-tag'
 
 const UpcomingEvents = async () => {
@@ -17,14 +18,15 @@ const UpcomingEvents = async () => {
   return (
     <section
       id="events"
-      className="scroll-mt-20 bg-zinc-950 px-5 py-20 text-white lg:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-zinc-950 px-5 py-20 text-white lg:py-28"
     >
-      <div className="container mx-auto">
-        <TitleWithTag className="mb-6 text-2xl md:text-3xl lg:text-4xl">
+      <SectionDecor />
+      <div className="relative container mx-auto">
+        <TitleWithTag className="mb-6 text-3xl font-semibold md:text-5xl lg:text-6xl">
           Próximos Eventos
         </TitleWithTag>
         <Reveal delay={0.1}>
-          <p className="mb-6 text-base md:max-w-2xl md:text-lg">
+          <p className="font-display mb-6 text-lg font-semibold text-current opacity-70 md:max-w-2xl md:text-xl">
             Confira o que está por vir na comunidade e participe dos nossos
             próximos encontros.
           </p>

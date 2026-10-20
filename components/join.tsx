@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { WHATSAPP_URL } from '@/lib/site'
 import { getImageUrl } from '@/sanity/lib/image'
 import { getHomePage } from '@/sanity/lib/queries'
 
@@ -16,11 +17,11 @@ const Join = async () => {
   return (
     <section id="join" className="relative scroll-mt-20 px-5 py-20 lg:py-28">
       <div className="container mx-auto text-white">
-        <TitleWithTag className="mb-6 text-2xl md:text-3xl lg:text-4xl">
+        <TitleWithTag className="mb-6 text-3xl font-semibold md:text-5xl lg:text-6xl">
           Junte-se à comunidade!
         </TitleWithTag>
         <Reveal delay={0.1}>
-          <p className="mb-12 text-base md:max-w-2xl md:text-lg">
+          <p className="font-display mb-12 text-lg font-semibold md:max-w-2xl md:text-xl">
             Fique por dentro dos eventos, novidades e faça parte das nossas
             conversas. Entre agora no grupo da RFEC no WhatsApp!
           </p>
@@ -31,10 +32,13 @@ const Join = async () => {
             aria-hidden
           />
           <Button
+            asChild
             variant="secondary"
             className="relative md:h-11 md:px-8 md:text-base"
           >
-            Entrar na RFEC!
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              Entrar na RFEC!
+            </a>
           </Button>
         </Reveal>
       </div>

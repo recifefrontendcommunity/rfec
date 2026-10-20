@@ -25,6 +25,18 @@ export function formatEventDateTime(iso: string): string {
   }).format(new Date(iso))
 }
 
+/** { day: "25", month: "out" } */
+export function formatEventDay(iso: string): { day: string; month: string } {
+  const parts = new Intl.DateTimeFormat(LOCALE, {
+    day: '2-digit',
+    month: 'short',
+    timeZone: TIME_ZONE
+  }).formatToParts(new Date(iso))
+  const pick = (type: string) =>
+    parts.find((part) => part.type === type)?.value.replace('.', '') ?? ''
+  return { day: pick('day'), month: pick('month') }
+}
+
 /** "19:00" */
 export function formatEventTime(iso: string): string {
   return new Intl.DateTimeFormat(LOCALE, {
