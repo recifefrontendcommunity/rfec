@@ -14,11 +14,11 @@ export function EventPastAssets({ assets }: { assets?: PastAssets }) {
   if (!hasContent) return null
 
   const linkClass =
-    'inline-flex items-center gap-2 text-sm font-medium underline underline-offset-4'
+    'inline-flex w-fit items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-500 hover:text-blue-600'
 
   return (
     <section aria-labelledby="assets-heading">
-      <h2 id="assets-heading" className="mb-6 text-2xl font-semibold">
+      <h2 id="assets-heading" className="mb-6 text-3xl font-semibold">
         Materiais
       </h2>
       <div className="flex flex-col gap-3">

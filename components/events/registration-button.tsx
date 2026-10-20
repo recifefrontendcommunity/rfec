@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 /**
  * External registration CTA (Sympla). Registration is never handled on-platform.
@@ -18,7 +19,14 @@ export function RegistrationButton({
   if (!url) return null
 
   return (
-    <Button asChild size="lg" className={className}>
+    <Button
+      asChild
+      size="lg"
+      className={cn(
+        'h-12 bg-blue-500 px-8 text-base text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600',
+        className
+      )}
+    >
       <a href={url} target="_blank" rel="noopener noreferrer">
         {label} <ExternalLink />
       </a>

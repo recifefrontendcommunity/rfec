@@ -8,7 +8,7 @@ export function EventSponsors({ sponsors }: { sponsors?: Sponsor[] }) {
 
   return (
     <section aria-labelledby="sponsors-heading">
-      <h2 id="sponsors-heading" className="mb-6 text-2xl font-semibold">
+      <h2 id="sponsors-heading" className="mb-6 text-3xl font-semibold">
         Patrocinadores
       </h2>
       <ul className="flex flex-wrap items-center gap-6">
@@ -34,7 +34,7 @@ export function EventSponsors({ sponsors }: { sponsors?: Sponsor[] }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={sponsor.name}
-                  className="block opacity-80 transition-opacity hover:opacity-100"
+                  className="block rounded-2xl border border-zinc-200 bg-white p-4 opacity-80 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:opacity-100 hover:shadow-lg"
                 >
                   {content}
                 </a>

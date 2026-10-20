@@ -7,7 +7,7 @@ export function EventAgenda({ items }: { items?: AgendaItem[] }) {
 
   return (
     <section aria-labelledby="agenda-heading">
-      <h2 id="agenda-heading" className="mb-6 text-2xl font-semibold">
+      <h2 id="agenda-heading" className="mb-6 text-3xl font-semibold">
         Programação
       </h2>
       <ol className="space-y-4">
@@ -18,10 +18,10 @@ export function EventAgenda({ items }: { items?: AgendaItem[] }) {
           return (
             <li
               key={item._key}
-              className="flex flex-col gap-1 rounded-lg border border-border p-4 sm:flex-row sm:gap-6"
+              className="flex flex-col gap-1 rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 sm:flex-row sm:gap-6"
             >
               {time && (
-                <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground sm:w-32 sm:shrink-0">
+                <div className="flex items-center gap-1.5 text-sm font-bold text-blue-500 sm:w-32 sm:shrink-0">
                   <Clock className="size-4" />
                   {time}
                 </div>
@@ -29,13 +29,13 @@ export function EventAgenda({ items }: { items?: AgendaItem[] }) {
               <div className="flex flex-col gap-1">
                 <h3 className="font-semibold">{item.title}</h3>
                 {item.speaker?.name && (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {item.speaker.name}
                     {item.speaker.role ? ` · ${item.speaker.role}` : ''}
                   </p>
                 )}
                 {item.description && (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {item.description}
                   </p>
                 )}

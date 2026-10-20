@@ -66,17 +66,20 @@ export default async function EventGalleryPage({
   if (!hasPhotos && !externalAlbumUrl) notFound()
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16">
+    <div className="container mx-auto px-4 pt-28 pb-12 md:pb-16">
       <Link
         href={`/eventos/${event.slug}`}
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold shadow-sm transition-all hover:border-blue-500 hover:text-blue-600"
       >
-        <ArrowLeft className="size-4" /> Voltar para o evento
+        <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />{' '}
+        Voltar para o evento
       </Link>
 
-      <header className="mb-8 mt-6">
-        <h1 className="text-3xl font-bold md:text-4xl">Galeria</h1>
-        <p className="mt-2 text-muted-foreground">{event.title}</p>
+      <header className="mt-6 mb-8">
+        <h1 className="text-4xl font-semibold tracking-tighter md:text-6xl">
+          Galeria
+        </h1>
+        <p className="text-muted-foreground mt-2">{event.title}</p>
       </header>
 
       {hasPhotos && <GalleryGrid photos={photos} />}
@@ -86,7 +89,7 @@ export default async function EventGalleryPage({
           href={externalAlbumUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium underline underline-offset-4"
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-500 hover:text-blue-600"
         >
           Ver álbum completo <ExternalLink className="size-4" />
         </a>
