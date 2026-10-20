@@ -28,7 +28,7 @@ export function EventGalleryPreview({
   return (
     <section aria-labelledby="gallery-heading">
       <div className="mb-6 flex items-center justify-between">
-        <h2 id="gallery-heading" className="text-2xl font-semibold">
+        <h2 id="gallery-heading" className="text-3xl font-semibold">
           Galeria
         </h2>
         {(hasMore || photoCount > 0) && (
@@ -49,7 +49,7 @@ export function EventGalleryPreview({
             return (
               <div
                 key={photo._key}
-                className="relative aspect-[3/2] overflow-hidden rounded-lg bg-muted"
+                className="group bg-muted relative aspect-[3/2] overflow-hidden rounded-3xl"
               >
                 <Image
                   src={src}
@@ -57,7 +57,7 @@ export function EventGalleryPreview({
                   fill
                   sizes="(max-width: 640px) 50vw, 33vw"
                   loading="lazy"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
             )

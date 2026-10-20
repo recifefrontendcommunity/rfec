@@ -12,7 +12,8 @@ import { EventSpeakers } from '@/components/events/event-speakers'
 import { EventSponsors } from '@/components/events/event-sponsors'
 import { RichText } from '@/components/events/portable-text'
 import { RegistrationButton } from '@/components/events/registration-button'
-import { Badge } from '@/components/ui/badge'
+import { Reveal } from '@/components/motion/reveal'
+import { SectionDecor } from '@/components/motion/section-decor'
 import { formatEventDateTime, isPastEvent } from '@/lib/events'
 import { absoluteUrl } from '@/lib/site'
 import { getImageUrl } from '@/sanity/lib/image'
@@ -85,58 +86,77 @@ export default async function EventDetailPage({
     <article className="pb-16">
       <EventJsonLd event={event} url={absoluteUrl(`/eventos/${event.slug}`)} />
 
-      {banner && (
-        <div className="relative aspect-[21/9] w-full bg-muted">
-          <Image
-            src={banner}
-            alt={event.banner?.alt || event.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+      <div className="relative overflow-hidden bg-zinc-950 px-4 pt-28 pb-12 text-white md:pb-16">
+        <SectionDecor />
+        <div className="relative container mx-auto">
+          <Link
+            href="/eventos"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-200 backdrop-blur transition-colors hover:border-blue-500 hover:text-white"
+          >
+            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+            Voltar para eventos
+          </Link>
+
+          {banner && (
+            <Reveal delay={0.1} className="mt-6">
+              <div className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl bg-zinc-800 shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src={banner}
+                  alt={event.banner?.alt || event.title}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+          )}
         </div>
-      )}
+      </div>
 
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl py-8 md:py-12">
-          <Link
-            href="/eventos"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="size-4" /> Voltar para eventos
-          </Link>
-
-          <header className="mt-6 flex flex-col gap-4">
+          <header className="flex flex-col gap-5">
             <div className="flex flex-wrap items-center gap-2">
               {event.eventType && (
-                <Badge variant="secondary">{event.eventType.title}</Badge>
+                <span className="rounded-full bg-blue-500 px-3 py-1 text-xs font-bold text-white">
+                  {event.eventType.title}
+                </span>
               )}
               {event.tags?.map((tag) => (
-                <Badge key={tag.slug} variant="outline">
-                  {tag.title}
-                </Badge>
+                <span
+                  key={tag.slug}
+                  className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700"
+                >
+                  #{tag.title}
+                </span>
               ))}
             </div>
 
-            <h1 className="text-3xl font-bold md:text-4xl">{event.title}</h1>
+            <h1 className="text-4xl font-semibold tracking-tighter md:text-6xl">
+              {event.title}
+            </h1>
 
-            <div className="flex flex-col gap-2 text-muted-foreground">
-              <p className="flex items-center gap-2">
-                <CalendarDays className="size-5" />
+            <div className="grid gap-3 sm:grid-cols-2">
+              <p className="flex items-center gap-3 rounded-3xl border border-zinc-200 bg-white p-4 text-sm font-semibold shadow-sm">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-500">
+                  <CalendarDays className="size-5" />
+                </span>
                 <time dateTime={event.startAt}>
                   {formatEventDateTime(event.startAt)}
                 </time>
               </p>
               {locationText && (
-                <p className="flex items-center gap-2">
-                  <MapPin className="size-5" />
+                <p className="flex items-center gap-3 rounded-3xl border border-zinc-200 bg-white p-4 text-sm font-semibold shadow-sm">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-500">
+                    <MapPin className="size-5" />
+                  </span>
                   {event.location?.mapUrl ? (
                     <a
                       href={event.location.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline underline-offset-4"
+                      className="underline-offset-4 hover:text-blue-600 hover:underline"
                     >
                       {locationText}
                     </a>
@@ -154,23 +174,33 @@ export default async function EventDetailPage({
             )}
           </header>
 
-          <div className="mt-10 space-y-12">
+          <div className="mt-12 space-y-14">
             {event.fullDescription && (
               <section aria-label="Sobre o evento">
                 <RichText value={event.fullDescription} />
               </section>
             )}
 
-            <EventAgenda items={event.agenda} />
-            <EventSpeakers speakers={event.speakers} />
-            <EventGalleryPreview
-              slug={event.slug}
-              highlights={event.gallery?.highlights}
-              photoCount={event.gallery?.photoCount}
-              externalAlbumUrl={event.gallery?.externalAlbumUrl}
-            />
-            {past && <EventPastAssets assets={event.pastAssets} />}
-            <EventSponsors sponsors={event.sponsors} />
+            <Reveal>
+              <EventAgenda items={event.agenda} />
+            </Reveal>
+            <Reveal>
+              <EventSpeakers speakers={event.speakers} />
+            </Reveal>
+            <Reveal>
+              <EventGalleryPreview
+                slug={event.slug}
+                highlights={event.gallery?.highlights}
+                photoCount={event.gallery?.photoCount}
+                externalAlbumUrl={event.gallery?.externalAlbumUrl}
+              />
+            </Reveal>
+            <Reveal>
+              {past && <EventPastAssets assets={event.pastAssets} />}
+            </Reveal>
+            <Reveal>
+              <EventSponsors sponsors={event.sponsors} />
+            </Reveal>
           </div>
         </div>
       </div>

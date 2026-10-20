@@ -43,7 +43,7 @@ export function EventFilterBar({
       <div
         role="tablist"
         aria-label="Filtrar eventos por período"
-        className="inline-flex rounded-lg border border-border bg-muted p-1"
+        className="inline-flex rounded-full border border-zinc-200 bg-zinc-100 p-1"
       >
         {STATUS_TABS.map((tab) => (
           <button
@@ -53,10 +53,10 @@ export function EventFilterBar({
             aria-selected={status === tab.value}
             onClick={() => update({ status: tab.value })}
             className={cn(
-              'rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
+              'rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300',
               status === tab.value
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-white text-zinc-950 shadow-md'
+                : 'text-zinc-500 hover:text-zinc-950'
             )}
           >
             {tab.label}
@@ -65,12 +65,12 @@ export function EventFilterBar({
       </div>
 
       {tags.length > 0 && (
-        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        <label className="text-muted-foreground flex items-center gap-2 text-sm">
           <span className="sr-only sm:not-sr-only">Tag:</span>
           <select
             value={activeTag}
             onChange={(event) => update({ tag: event.target.value })}
-            className="h-9 rounded-md border border-input bg-background px-3 text-sm text-foreground shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="focus-visible:ring-ring h-10 rounded-full border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-900 shadow-sm transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none"
           >
             <option value="">Todas as tags</option>
             {tags.map((tag) => (

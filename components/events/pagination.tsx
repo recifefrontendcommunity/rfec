@@ -21,7 +21,7 @@ export function Pagination({
   const hasNext = currentPage < totalPages
 
   const linkClass =
-    'inline-flex h-9 items-center rounded-md border border-input bg-background px-4 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground'
+    'inline-flex h-10 items-center rounded-full border border-zinc-200 bg-white px-5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-blue-500 hover:text-blue-600'
   const disabledClass = 'pointer-events-none opacity-50'
 
   return (
@@ -38,7 +38,7 @@ export function Pagination({
         Anterior
       </Link>
 
-      <span className="text-sm text-muted-foreground">
+      <span className="text-muted-foreground text-sm">
         Página {currentPage} de {totalPages}
       </span>
 

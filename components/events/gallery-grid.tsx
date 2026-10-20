@@ -62,7 +62,7 @@ export function GalleryGrid({ photos }: { photos: LightboxPhoto[] }) {
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
-              className="group relative block aspect-[3/2] w-full overflow-hidden rounded-lg bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="group bg-muted relative block aspect-[3/2] w-full overflow-hidden rounded-3xl focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none"
               aria-label={photo.caption || `Abrir foto ${index + 1}`}
             >
               <Image
@@ -71,7 +71,7 @@ export function GalleryGrid({ photos }: { photos: LightboxPhoto[] }) {
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 loading="lazy"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </button>
           </li>
@@ -83,7 +83,7 @@ export function GalleryGrid({ photos }: { photos: LightboxPhoto[] }) {
           <button
             type="button"
             onClick={() => setVisible((v) => v + STEP)}
-            className="inline-flex h-10 items-center rounded-md border border-input bg-background px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-11 items-center rounded-full border border-zinc-200 bg-white px-7 text-sm font-semibold shadow-sm transition-all duration-300 hover:scale-105 hover:border-blue-500 hover:text-blue-600"
           >
             Carregar mais ({photos.length - visible})
           </button>
@@ -102,7 +102,7 @@ export function GalleryGrid({ photos }: { photos: LightboxPhoto[] }) {
             type="button"
             onClick={close}
             aria-label="Fechar"
-            className="absolute right-4 top-4 rounded-full p-2 text-white/80 transition-colors hover:text-white"
+            className="absolute top-4 right-4 rounded-full p-2 text-white/80 transition-colors hover:text-white"
           >
             <X className="size-7" />
           </button>

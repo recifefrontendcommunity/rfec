@@ -4,9 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --font-sans: var(--font-geist-sans);
+/* `inline`: the next/font variables live on <body>, not :root, so the theme
+   tokens must be resolved where they are used. */
+@theme inline {
+  --font-sans: var(--font-manrope);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-rubik);
 }
 
 :root {
@@ -127,6 +130,15 @@
   }
 }
 
+/* Unlayered on purpose: heavy display headings win over weight utilities. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-rubik), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
 /* Smooth anchor scrolling, but not for reduced-motion users. */
 @media (prefers-reduced-motion: no-preference) {
   html {
@@ -147,6 +159,56 @@
 
 .rfec-float {
   animation: rfec-float 6s ease-in-out infinite;
+}
+
+@keyframes rfec-orb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -30px, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-30px, 30px, 0) scale(0.9);
+  }
+}
+
+.rfec-orb {
+  animation: rfec-orb 14s ease-in-out infinite;
+}
+
+@keyframes rfec-shine {
+  to {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+/* Soft sweep of light across a hovered card/button. */
+.rfec-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  transform: translateX(-150%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 18%),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.rfec-shine:hover::after {
+  animation: rfec-shine 0.9s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rfec-orb,
+  .rfec-float {
+    animation: none;
+  }
 }
 
 [data-active='false'] .rfec-anim {

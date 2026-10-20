@@ -6,9 +6,12 @@ import { Reveal } from './motion/reveal'
 import { SplitText } from './motion/split-text'
 import { Button } from './ui/button'
 
+const GRADIENT =
+  'bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500 bg-clip-text text-transparent'
+
 const Hero = () => {
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-zinc-950 text-white">
+    <section className="relative isolate flex min-h-svh items-center overflow-hidden bg-zinc-950 text-white">
       <HeroBackground />
       <div className="relative container mx-auto px-5 py-20 text-center lg:py-28">
         <Reveal waitIntro y={16}>
@@ -20,19 +23,19 @@ const Hero = () => {
           as="h1"
           waitIntro
           delay={0.1}
-          className="mb-6 text-4xl leading-[1.05] font-bold tracking-tight md:text-6xl md:text-balance lg:text-7xl"
+          className="mb-6 text-5xl leading-[1.02] font-semibold tracking-tighter md:text-7xl md:text-balance lg:text-8xl"
           words={[
             { text: 'Conectando', br: true },
             { text: 'quem' },
-            { text: 'constrói', className: 'text-blue-500' },
-            { text: 'a', className: 'text-blue-500' },
-            { text: 'web', className: 'text-blue-500' },
+            { text: 'constrói', className: GRADIENT },
+            { text: 'a', className: GRADIENT },
+            { text: 'web', className: GRADIENT },
             { text: 'em', br: false },
             { text: 'Recife' }
           ]}
         />
         <Reveal waitIntro delay={0.7}>
-          <p className="mb-8 text-lg text-zinc-300 md:mx-auto md:max-w-2xl md:text-xl md:text-pretty">
+          <p className="font-display mb-8 text-lg font-semibold text-zinc-300 md:mx-auto md:max-w-2xl md:text-xl md:text-pretty">
             Somos uma comunidade que promove aprendizado, networking e troca de
             experiências para desenvolvedores front-end e entusiastas de
             tecnologia.

@@ -6,3 +6,6 @@ export const SITE_URL = (
 export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
 }
+
+/** WhatsApp group invite for joining the community. */
+export const WHATSAPP_URL = 'https://chat.whatsapp.com/JFCteWc1fCY7e88y4hKUA6'

@@ -16,9 +16,9 @@ export default function EventosError({
   }, [error])
 
   return (
-    <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-24 text-center">
+    <div className="container mx-auto flex flex-col items-center gap-4 px-4 pt-32 pb-24 text-center">
       <h1 className="text-2xl font-semibold">Algo deu errado</h1>
-      <p className="max-w-md text-muted-foreground">
+      <p className="text-muted-foreground max-w-md">
         Não foi possível carregar os eventos agora. Tente novamente em
         instantes.
       </p>

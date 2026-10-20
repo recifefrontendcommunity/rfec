@@ -26,7 +26,7 @@ export function EventSpeakers({ speakers }: { speakers?: Speaker[] }) {
 
   return (
     <section aria-labelledby="speakers-heading">
-      <h2 id="speakers-heading" className="mb-6 text-2xl font-semibold">
+      <h2 id="speakers-heading" className="mb-6 text-3xl font-semibold">
         Palestrantes
       </h2>
       <ul className="grid gap-6 sm:grid-cols-2">
@@ -35,9 +35,9 @@ export function EventSpeakers({ speakers }: { speakers?: Speaker[] }) {
           return (
             <li
               key={speaker._id}
-              className="flex gap-4 rounded-lg border border-border p-4"
+              className="flex gap-4 rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10"
             >
-              <div className="relative size-20 shrink-0 overflow-hidden rounded-full bg-muted">
+              <div className="bg-muted relative size-20 shrink-0 overflow-hidden rounded-full ring-2 ring-blue-500/30">
                 {photo && (
                   <Image
                     src={photo}
@@ -51,14 +51,14 @@ export function EventSpeakers({ speakers }: { speakers?: Speaker[] }) {
               <div className="flex flex-col gap-1">
                 <h3 className="font-semibold">{speaker.name}</h3>
                 {(speaker.role || speaker.company) && (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {[speaker.role, speaker.company]
                       .filter(Boolean)
                       .join(' @ ')}
                   </p>
                 )}
                 {speaker.bio && (
-                  <div className="text-sm text-muted-foreground [&_p]:mb-2">
+                  <div className="text-muted-foreground text-sm [&_p]:mb-2">
                     <RichText value={speaker.bio} />
                   </div>
                 )}
@@ -75,7 +75,7 @@ export function EventSpeakers({ speakers }: { speakers?: Speaker[] }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={link.platform ?? 'Link'}
-                          className="text-muted-foreground transition-colors hover:text-foreground"
+                          className="text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <Icon className="size-5" />
                         </a>
