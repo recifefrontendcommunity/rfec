@@ -47,7 +47,8 @@ const Header = () => {
     >
       <div
         className={cn(
-          'container mx-auto rounded-full border px-4 py-2 transition-all duration-300 md:px-6',
+          'container mx-auto border px-4 py-2 transition-all duration-300 md:rounded-full md:px-6',
+          open ? 'rounded-3xl' : 'rounded-full',
           'backdrop-blur-xl backdrop-saturate-150',
           scrolled
             ? 'border-white/15 bg-zinc-950/80 shadow-xl shadow-black/20'
