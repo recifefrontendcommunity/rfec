@@ -442,7 +442,8 @@ export function BadgeGenerator() {
                   width: BADGE_WIDTH,
                   height: BADGE_HEIGHT,
                   transform: `scale(${scale})`,
-                  transformOrigin: 'top left'
+                  transformOrigin: 'top left',
+                  position: 'relative'
                 }}
                 onPointerMove={onPointerMove}
                 onPointerLeave={onPointerLeave}
@@ -484,11 +485,6 @@ export function BadgeGenerator() {
                       }}
                     >
                       <BadgeFront {...data} />
-                      <motion.span
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-[28px] mix-blend-soft-light"
-                        style={{ background: glare, opacity: glareOpacity }}
-                      />
                     </div>
                     <div
                       className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden]"
@@ -498,14 +494,20 @@ export function BadgeGenerator() {
                       }}
                     >
                       <BadgeBack groupQr={groupQr} theme={theme} code={code} />
-                      <motion.span
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-[28px] mix-blend-soft-light"
-                        style={{ background: glare, opacity: glareOpacity }}
-                      />
                     </div>
                   </motion.div>
                 </motion.div>
+                {/* Outside the 3D context: blend modes inside a flipped face
+                    break backface culling and leak the mirrored front. */}
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-[28px]"
+                  style={{
+                    background: glare,
+                    opacity: glareOpacity,
+                    mixBlendMode: 'soft-light'
+                  }}
+                />
               </div>
             </motion.div>
           </div>
